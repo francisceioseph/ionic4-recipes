@@ -23,10 +23,9 @@ export class RecipesService {
 
   get recipesSubject(): BehaviorSubject<Recipe[]> {
     return this.recipesSub;
-
   }
 
-  getAllRecipes(): Recipe[] {
+  getAllRecipes(): void {
     this.recipesSub.next(this.recipes);
   }
 
