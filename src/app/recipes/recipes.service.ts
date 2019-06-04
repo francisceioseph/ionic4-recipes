@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { Recipe } from './recipe.model';
 import { BehaviorSubject } from 'rxjs';
@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipesService {
+export class RecipesService implements OnDestroy {
   private recipes: Recipe[] = [
     {
       id: 'r1',
@@ -37,5 +37,9 @@ export class RecipesService {
   removeRecipe(id: string): void {
     this.recipes = this.recipes.filter(recipe => recipe.id !== id);
     this.recipesSub.next(this.recipes);
+  }
+
+  ngOnDestroy() {
+    this.recipesSub.unsubscribe();
   }
 }
