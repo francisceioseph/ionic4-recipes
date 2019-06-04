@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
